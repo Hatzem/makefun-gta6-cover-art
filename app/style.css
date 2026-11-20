@@ -1,0 +1,210 @@
+@font-face {
+  font-family: 'Anton';
+  src: url('./fonts/Anton-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pacifico';
+  src: url('./fonts/Pacifico-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #0e0a1a;
+  color: #f4eefc;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 20px;
+  padding: 14px 22px;
+  background: linear-gradient(90deg, #2b0a4a 0%, #7a1048 45%, #ff5e3a 100%);
+  border-bottom: 3px solid #ffd76a;
+}
+
+.brand {
+  font-family: 'Anton', 'Arial Narrow', sans-serif;
+  font-size: 26px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.brand em {
+  font-family: 'Pacifico', cursive;
+  font-size: 20px;
+  text-transform: none;
+  letter-spacing: 0;
+  color: #ffd76a;
+}
+
+.brand-mark {
+  display: inline-block;
+  background: #ffd76a;
+  color: #2b0a4a;
+  border-radius: 6px;
+  padding: 1px 8px;
+  margin-right: 6px;
+}
+
+.tagline { font-size: 13px; opacity: 0.92; }
+
+.app {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 22px;
+  padding: 18px 22px 26px;
+  max-width: 1560px;
+  margin: 0 auto;
+}
+
+.controls h1 {
+  font-family: 'Anton', 'Arial Narrow', sans-serif;
+  font-size: 24px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 4px 0 2px;
+}
+
+.controls h2 {
+  font-family: 'Anton', 'Arial Narrow', sans-serif;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #ffb3d9;
+  margin: 20px 0 8px;
+  border-bottom: 1px solid #3a2358;
+  padding-bottom: 4px;
+}
+
+.hint { font-size: 13px; color: #c9b8e0; margin: 6px 0; }
+
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+label { display: block; margin: 8px 0; font-size: 13px; color: #d9cdf0; }
+
+label input[type="text"] {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 9px 10px;
+  font-size: 15px;
+  color: #fff;
+  background: #1d1233;
+  border: 1px solid #5b3a86;
+  border-radius: 8px;
+}
+
+label input[type="text"]:focus { outline: 2px solid #ff2d95; border-color: #ff2d95; }
+
+.upload {
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: #ff2d95;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.upload input { display: none; }
+
+.strip { display: flex; gap: 8px; margin: 10px 0 4px; flex-wrap: wrap; }
+
+.strip img {
+  width: 104px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #5b3a86;
+  cursor: pointer;
+  display: block;
+}
+
+.strip img.assigned { border-color: #ffd76a; }
+
+button {
+  cursor: pointer;
+  padding: 8px 13px;
+  border-radius: 8px;
+  border: 1px solid #5b3a86;
+  background: #241640;
+  color: #f4eefc;
+  font-size: 14px;
+}
+
+button:hover { border-color: #ff2d95; }
+
+button.active {
+  background: #ff2d95;
+  border-color: #ff2d95;
+  color: #fff;
+  font-weight: 700;
+}
+
+button.primary {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #ff2d95, #ff5e3a);
+  border: none;
+}
+
+.slider { flex: 1; min-width: 170px; margin: 0; }
+
+.slider input { width: 100%; accent-color: #ff2d95; }
+
+.export-row button { flex: 1; }
+
+#status { min-height: 20px; font-size: 13px; color: #ffd76a; margin: 10px 0 0; }
+
+.preview { min-width: 0; }
+
+.preview canvas {
+  width: 100%;
+  max-width: 860px;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  border: 3px solid #3a2358;
+  background: #160a2e;
+  cursor: grab;
+  touch-action: none;
+}
+
+.preview canvas:active { cursor: grabbing; }
+
+@media (max-width: 900px) {
+  .app { grid-template-columns: 1fr; }
+}
+
+/* Screenshot mode: the cover alone fills the viewport, no editor chrome. */
+body.shot-cover { background: #160a2e; }
+body.shot-cover .topbar,
+body.shot-cover .controls,
+body.shot-cover .preview .hint { display: none; }
+body.shot-cover .app { display: block; padding: 0; margin: 0; max-width: none; }
+body.shot-cover .preview canvas {
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  border: none;
+  border-radius: 0;
+  object-fit: fill;
+}
